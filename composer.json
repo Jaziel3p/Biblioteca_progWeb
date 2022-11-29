@@ -1,0 +1,17 @@
+{
+    "name": "programacion_web/biblioteca",
+    "description": "Creando proyecto final de biblioteca en programación web",
+    "type": "project",
+    "authors": [
+        {
+            "name": "Manuel Apolinar Castillo"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "MVC\\" : "./",
+            "Controllers\\" : "./controllers",
+            "Model\\" : "./models"
+        }
+    }
+}
