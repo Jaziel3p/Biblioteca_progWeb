@@ -1,0 +1,144 @@
+/* variables */
+:root {
+    --blue-btn: #1c5fb4;
+    --blue-btn-secondary: #003e8e;
+    --fuente_principal: 'Poppins', sans-serif;
+}
+
+/* globales */
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-family: var(--fuente_principal)
+}
+
+*,
+*:before,
+*:after {
+    box-sizing: inherit;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+li {
+    list-style: none;
+}
+
+/* estilos para el header */
+
+.header {
+    box-shadow: 0px 0px 8px rgba(0, 0, 0, .3);
+    border-bottom-left-radius: .3rem;
+    border-bottom-right-radius: .3rem;
+    padding: 1.3rem;
+}
+
+.header ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header menu {
+    display: flex;
+}
+
+.page__logo {
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+}
+
+/* estilos para el login */
+
+.login__container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+    height: 100vh;
+    margin: 0 auto;
+}
+
+.login__hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/login_image.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: white;
+}
+
+.title {
+    font-size: 6rem;
+    padding: 1.5rem;
+    text-transform: capitalize;
+}
+
+/* estilos para el formulario */
+
+.form__section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 4rem;
+    position: relative;
+}
+
+.form__icon {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.form__icon svg {
+    width: 6.5rem;
+}
+
+.form .input {
+    margin-bottom: 2rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 24rem;
+}
+
+.form .input input {
+    padding: .2rem;
+    border: none;
+    border-bottom: .5px solid var(--blue-btn);
+}
+
+.form .button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.form .button>input {
+    background-color: var(--blue-btn);
+    color: white;
+    font-weight: lighter;
+    font-size: 1.5rem;
+    border-radius: .2rem;
+    width: 16rem;
+    padding: .2rem 2rem;
+}
+
+.form .button>input:hover {
+    cursor: pointer;
+    background-color: var(--blue-btn-secondary);
+}
+
+.form .input>label {
+    margin-bottom: .5rem;
+}

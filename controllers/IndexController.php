@@ -2,10 +2,12 @@
 
 namespace Controllers;
 
+use MVC\Router;
+
 class IndexController {
 
-    public static function index(){
-        echo "pagina de index";
+    public static function index(Router $router){
+        $router->render('principal');
     }
 
 }
