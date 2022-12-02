@@ -5,11 +5,9 @@ namespace Controllers;
 use Model\Usuario;
 use MVC\Router;
 
-class LoginController
-{
+class LoginController{
 
-    public static function login(Router $router)
-    {
+    public static function login(Router $router){
 
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
@@ -37,21 +35,19 @@ class LoginController
                     $_SESSION['rol'] = $usuario->rol;
 
 
-                    if($_SESSION['rol'] == 'admin'){
+                    if ($_SESSION['rol'] == 'admin') {
                         header('Location: /panel');
                         return;
                     }
                     header('Location: /libros');
-                    
                 }
             }
         }
-
-        $router->render('login/login');
+        
+        $router->render('login');
     }
 
-    public static function logout()
-    {
+    public static function logout(){
         echo "logout";
     }
 }

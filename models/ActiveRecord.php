@@ -151,7 +151,7 @@ class ActiveRecord {
     }
 
     // Actualizar el registro
-    public function actualizar() {
+    public function actualizar($columa = "id") {
         // Sanitizar los datos
         $atributos = $this->sanitizarAtributos();
 
@@ -164,7 +164,7 @@ class ActiveRecord {
         // Consulta SQL
         $query = "UPDATE " . static::$tabla ." SET ";
         $query .=  join(', ', $valores );
-        $query .= " WHERE id = '" . self::$db->escape_string($this->id) . "' ";
+        $query .= " WHERE $columa = '" . self::$db->escape_string($this->id) . "' ";
         $query .= " LIMIT 1 "; 
 
         // Actualizar BD
@@ -173,8 +173,8 @@ class ActiveRecord {
     }
 
     // Eliminar un Registro por su ID
-    public function eliminar() {
-        $query = "DELETE FROM "  . static::$tabla . " WHERE id = " . self::$db->escape_string($this->id) . " LIMIT 1";
+    public function eliminar($columa = 'id') {
+        $query = "DELETE FROM "  . static::$tabla . " WHERE $columa = " . self::$db->escape_string($this->id) . " LIMIT 1";
         $resultado = self::$db->query($query);
         return $resultado;
     }

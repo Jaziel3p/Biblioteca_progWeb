@@ -7,7 +7,6 @@ class Usuario extends ActiveRecord {
     protected static $tabla = 'usuarios';
     
     protected static $columnasDB = [
-        'id_usuario',
         'nombre',
         'nombre_usuario',
         'apellido_paterno',

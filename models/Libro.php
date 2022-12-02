@@ -2,7 +2,15 @@
 
 namespace Model;
 
-class Libro {
+class Libro extends ActiveRecord{
+
+    protected static $tabla = 'libros';
+
+    protected static $columnasDB = [
+        'nombre',
+        'precio',
+        'cantidad_disponible'
+    ];
 
     public $id_libro;
     public $nombre;
@@ -11,11 +19,10 @@ class Libro {
 
     public function __construct($args = []){
 
-        $this->_libro = $args['_libro'] ?? null;
-        $this->nombre = ['nombre'] ?? '';
-        $this->precio = ['precio']?? '';
-        $this->cantidad_disponible = ['cantidad_disponible'] ?? '';
-        
+        $this->id_libro = $args['id_libro'] ?? null;
+        $this->nombre = $args['nombre'] ?? '';
+        $this->precio = $args['precio']?? '';
+        $this->cantidad_disponible = $args['cantidad_disponible'] ?? '';
     }
 
 }
