@@ -1,7 +1,7 @@
 <main class="login__container" id="login">
 
     <section class="login__hero">
-        <h1 class="title">Iniciar sesión</h1>
+        <h2 class="title">Iniciar sesión</h2>
     </section>
 
     <section class="form__section">
@@ -21,7 +21,7 @@
                 </svg>
             </picture>
 
-            <form class="form" action="">
+            <form class="form" action="/login" method="POST">
                 <div class="input">
                     <label for="nombre_usuario">Nombre de usuario</label>
                     <input type="text" id="nombre_usuario" name="nombre_usuario">
@@ -33,7 +33,7 @@
                 </div>
 
                 <div class="input button">
-                    <input type="submit" value="enviar">
+                    <input type="submit" value="iniciar sesión">
                 </div>
             </form>
         </div>

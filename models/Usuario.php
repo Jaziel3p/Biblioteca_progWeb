@@ -2,7 +2,20 @@
 
 namespace Model;
 
-class Usuario {
+class Usuario extends ActiveRecord {
+
+    protected static $tabla = 'usuarios';
+    
+    protected static $columnasDB = [
+        'id_usuario',
+        'nombre',
+        'nombre_usuario',
+        'apellido_paterno',
+        'apellido_materno',
+        'correo',
+        'contrasenia',
+        'rol'
+    ];
 
     public $id_usuario;
     public $nombre_usuario;
@@ -23,6 +36,9 @@ class Usuario {
         $this->correo = $args['correo'] ?? '';
         $this->contrasenia = $args['contrasenia'] ?? '';
         $this->rol = $args['rol'] ?? '';
+
     }
+
+    
 
 }
