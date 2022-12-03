@@ -46,8 +46,9 @@ class LoginController{
         
         $router->render('login');
     }
-
+    
     public static function logout(){
-        echo "logout";
+        $_SESSION = [];
+        header('Location: /login');
     }
 }
