@@ -81,8 +81,8 @@ li {
     align-items: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('../img/login_image.jpg');
     background-repeat: no-repeat;
-    background-size: cover;
     color: white;
+    background-size: cover;    
 }
 
 .title {
@@ -90,7 +90,6 @@ li {
     padding: 1.5rem;
     text-transform: capitalize;
 }
-
 /* estilos para el formulario */
 
 .form__section {
@@ -265,10 +264,14 @@ li {
     box-shadow: 1px 1px 1px 1px rgba(163, 163, 163, 0.93);
 }
 
-.table__action {
+.table__action, .table__action > a  {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.table__action > a {
+    flex-direction: column;
 }
 
 /* ESTILOS PARA LAS PAGINAS DE ERROR 404 */
@@ -285,11 +288,26 @@ li {
 }
 
 /* ESTILOS PARA EL FORMULARIO DE LIBROS */
-.form__libro {
+.form__libro , .form__reservacion {
     background: var(--white);
     padding: 4rem 2rem;
     border-radius: 1rem;
     box-shadow: 1px 11px 29px -6px rgba(0,0,0,0.31);
+}
+
+.form__reservacion section { 
+    margin-top: 1.3rem;
+}
+
+.form__reservacion form section {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+}
+
+.form__reservacion form .button-eliminar{
+    margin-top: 1.3rem;
+    width: initial;
 }
 
 .form__libro h2 {

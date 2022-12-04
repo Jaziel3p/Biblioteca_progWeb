@@ -1,7 +1,4 @@
-<?php
-use Model\Libro;
-$libro = Libro::where('id_libro', $_GET['id_libro']);
-?>
+
 
 <main class="panel__container">
 

@@ -30,7 +30,8 @@
             <ul>
 
                 <li>
-                    <a href="/panel">
+                    <?php $linkLibros = $usuario['rol'] == 'admin' ? '/panel' : '/libros' ?>
+                    <a href="<?php echo $linkLibros?>" >
                         <div class="">
                             <picture>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" viewBox="0 0 29 29">
@@ -40,10 +41,12 @@
                             <p>libros</p>
                         </div>
                     </a>
+
                 </li>
 
+                <?php if($usuario['rol'] == 'admin'): ?>
                 <li>
-                    <a href="/panel">
+                    <a href="/reservaciones">
                         <div class="">
                             <picture>
                                 <svg xmlns="http://www.w3.org/2000/svg" width="45" height="45" data-name="Layer 40" viewBox="0 0 50 50">
@@ -54,7 +57,9 @@
                         </div>
                     </a>
                 </li>
-
+                <?php endif?>
+                
+                <?php if($usuario['rol'] == 'admin'): ?>
                 <li>
                     <a href="/usuarios">
                         <div class="">
@@ -65,11 +70,12 @@
                                     </g>
                                 </svg>
                             </picture>
-                            <p>agregar usuarios</p>
+                            <p>usuarios</p>
                         </div>
                     </a>
                 </li>
-
+                <?php endif?>
+                
                 <li>
                     <a href="/logout">
                         <div class="">

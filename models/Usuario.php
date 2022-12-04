@@ -38,6 +38,12 @@ class Usuario extends ActiveRecord {
 
     }
 
+    public function getReservaciones(){
+        return array_filter(Reservacion::all(), function(Reservacion $r){
+            return $r->id_usuario == $this->id_usuario;
+        });
+    }
+
     
 
 }

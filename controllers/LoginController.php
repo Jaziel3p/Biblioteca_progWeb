@@ -17,37 +17,43 @@ class LoginController{
 
             //validaciones
             if (!$usuario) {
-                echo 'el usuario no existe';
+                echo
+                "<span style='color:white; background:red; display:block; text-align:center;'>
+                        El usuario no existe $auth->nombre_usuario no existe
+                    </span>";
             } else {
 
+
                 if ($usuario->contrasenia != $auth->contrasenia) {
-                    echo 'Contraseña incorrecta';
+                    echo
+                    "<span style='color:white; background:red; display:block; text-align:center;'>
+                            Contraseña incorrecta
+                        </span>";
                 } else {
 
-                    if (!$_SESSION) {
-                        session_start();
-                    }
+                    session_start();
 
-                    $_SESSION['id_usuario'] = $usuario->id_usuario;
-                    $_SESSION['nombre'] = $usuario->nombre;
+                    $_SESSION['id_usuario']     = $usuario->id_usuario;
+                    $_SESSION['nombre']         = $usuario->nombre;
                     $_SESSION['nombre_usuario'] = $usuario->nombre_usuario;
-                    $_SESSION['correo'] = $usuario->correo;
-                    $_SESSION['rol'] = $usuario->rol;
-
+                    $_SESSION['correo']         = $usuario->correo;
+                    $_SESSION['rol']            = $usuario->rol;
 
                     if ($_SESSION['rol'] == 'admin') {
                         header('Location: /panel');
                         return;
                     }
+
                     header('Location: /libros');
                 }
             }
         }
-        
+
         $router->render('login');
     }
-    
-    public static function logout(){
+
+    public static function logout()
+    {
         $_SESSION = [];
         header('Location: /login');
     }

@@ -9,23 +9,27 @@ class UsuarioController {
 
     public static function index(Router $router) { 
 
-        LibroController::validarSesion();
+        UsuarioController::validarSesion();
+
+        $clientes = array_filter(Usuario::all(), function(Usuario $usuario) {
+            return $usuario->rol != 'admin';
+        });
         
         $router->render('usuario/panelUsuario', [
             'usuario' => $_SESSION,
-            'usuarios' => Usuario::all()
+            'usuarios' => $clientes
         ]);
         
     }
     
     public static function crear(Router $router){
 
-        LibroController::validarSesion();
+        UsuarioController::validarSesion();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
+            $_POST['rol'] = 'cliente';
             $usuario = new Usuario($_POST);
-            $usuario->rol = "cliente";
             $usuario->guardar();
 
             header('Location: /usuarios');
@@ -38,7 +42,7 @@ class UsuarioController {
     
     public static function editar(Router $router){
         
-        LibroController::validarSesion();
+        UsuarioController::validarSesion();
 
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             $usuario = Usuario::where('id_usuario', $_POST['id_usuario']);
@@ -64,17 +68,29 @@ class UsuarioController {
     
     public static function eliminar(Router $router){
         
-        LibroController::validarSesion();
+        UsuarioController::validarSesion();
         
         if($_SERVER['REQUEST_METHOD'] == 'POST'){
             
             $usuario = Usuario::where('id_usuario', $_POST['id_usuario']);
             $usuario->id = $usuario->id_usuario;
-            $usuario->eliminar('id_usuario');
-            header('Location: /usuarios');
+            
+            if(!$usuario->getReservaciones()){
+                $usuario->eliminar('id_usuario');
+                header('Location: /usuarios');
+            }
+            else{
+                echo 
+                '<span style="color:white; background:red; display:block; text-align:center;">
+                    El usuario aun no puede ser eliminado porque tiene reservaciones pendientes
+                </span>';
+            }
         }
 
-        $usuario = Usuario::where('id_usuario', $_GET['id_usuario']);
+        if( !isset($usuario) ){
+            $usuario = Usuario::where('id_usuario', $_GET['id_usuario']);
+        }
+
         $router->render('usuario/eliminarUsuario', [
             'usuario' => $_SESSION,
             'usuarioFound' => $usuario

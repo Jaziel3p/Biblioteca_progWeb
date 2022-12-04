@@ -25,4 +25,10 @@ class Libro extends ActiveRecord{
         $this->cantidad_disponible = $args['cantidad_disponible'] ?? '';
     }
 
+    public function getReservaciones(){
+        return array_filter(Reservacion::all(), function(Reservacion $r){
+            return $r->id_libro == $this->id_libro;
+        });
+    }
+
 }
